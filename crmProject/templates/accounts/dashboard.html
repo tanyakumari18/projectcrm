@@ -1,0 +1,81 @@
+{% extends 'accounts/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dashboard</title>
+</head>
+<body>
+{% block content %}
+<br>
+{% include 'accounts/status.html' %}
+<br>
+<style>
+ body{
+     background-color: lightblue;
+ }
+ </style>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-warning text-danger text-center">
+                <h4>Customer Names</h4>
+            </div>
+            <div class="card-body bg-dark">
+                <table class="table table-bordered text-center text-white">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th>View</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in customers %}
+                    <tr>
+                        <td><a href="{% url 'customer' i.id %}">View</a></td>
+                        <td>{{ i.first_name }}</td>
+                        <td>{{ i.mobile }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning text-center text-danger">
+                <h3>Order Details</h3>
+            </div>
+            <div class="card-body bg-dark">
+                <table class="table text-white table-bordered text-center" >
+                    <thead class="bg-primary">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Order BY</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in orders %}
+                        <tr>
+                        <td>{{ i.product.name }}</td>
+                        <td>{{ i.customer.first_name }}</td>
+                        <td>{{ i.product.price }}</td>
+                        <td>{{ i.status }}</td>
+                        <td>{{ i.created_date }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

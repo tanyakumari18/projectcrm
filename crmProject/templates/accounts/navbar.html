@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<style>
+#logoutid{
+color: white;
+}
+#user1{
+color: white;
+margin-right: 10px;
+}
+#user2{
+margin-right: 5px;
+}
+#user3{
+margin-right: 5px;
+}
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'product' %}">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'all_customers' %}">Customers</a>
+            </li>
+        </ul>
+    </div>
+    <span class="input-group-text" id="user2"><i class="fa fa-user"></i></span>
+    <span id="user1">{{ request.user|capfirst }}</span>
+    <span class="input-group-text" id="user3"><i class="fa fa-sign-out"></i></span>
+  <a id="logoutid" href="{% url 'logout' %}">Logout</a>
+</nav>
+
+{% endblock %}
+</body>
+</html>

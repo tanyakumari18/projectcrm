@@ -1,0 +1,22 @@
+{% extends 'accounts/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editProduct</title>
+</head>
+<body>
+{% block content %}
+<br>
+<style>
+body{
+background-color: lightblue;
+}
+</style>
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Update">
+</form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends 'accounts/base.html' %}
+<html>
+<head>
+    <title>All Customers</title>
+</head>
+<body>
+{% block content %}
+    <style>
+    body{
+        background-color: lightblue;
+    }
+    </style>
+<br>
+    {% if customers %}
+        <h2 class="text-center">Available Customers..!!</h2>
+        <table class="table table-bordered text-center">
+        <thead class="bg-success text-white">
+        <tr>
+            <th>Sl.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody class="bg-dark text-white">
+        {% for i in customers %}
+            <tr>
+                <td>{{ i.id }}</td>
+            <td>{{ i.first_name }}</td>
+            <td>{{ i.last_name }}</td>
+            <td>{{ i.mobile }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{i.location}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+    {% else %}
+        <h2>No Customers</h2>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'accounts/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer</title>
+</head>
+<body>
+{% block content %}
+<br>
+<style>
+body{
+background-color: lightblue;
+}
+</style>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h4 class="text-center">Contact Information</h4>
+                <h6>Name: &ensp;{{ fullname }}</h6>
+                <h6>Email: &ensp; {{ customers.email }} </h6>
+                <h6>Mobile: {{ customers.mobile }} </h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+       {% include 'accounts/status.html' %}
+    </div>
+</div>
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-warning text-danger">
+                    <h1 class="card-title text-center">{{ customers.first_name|capfirst }} Orders</h1>
+                </div>
+                <div class="card-body bg-secondary">
+                    {% if orders %}
+                        <table class="table table-bordered text-center bg-dark text-white">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Product Name</th>
+                                    <th>Product Price</th>
+                                    <th>Product Status</th>
+                                    <th>Ordered Date</th>
+                                    <th>Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in orders %}
+                                <tr>
+                                    <td>{{ i.customer.first_name }}</td>
+                                    <td>{{ i.product.name }}</td>
+                                    <td>{{ i.product.price }}</td>
+                                    <td>{{ i.status }}</td>
+                                    <td>{{ i.created_date }}</td>
+                                    <td>{{ i.product.category }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                    <h2>No Orders</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
